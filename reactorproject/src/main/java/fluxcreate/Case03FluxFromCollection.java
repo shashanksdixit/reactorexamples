@@ -5,7 +5,7 @@ import reactor.core.publisher.Flux;
 import java.util.Arrays;
 import java.util.List;
 
-public class FluxFromCollection {
+public class Case03FluxFromCollection {
     public static void main(String[] args) {
         List<String> strings = Arrays.asList("a", "b", "c", "d");
         Flux
