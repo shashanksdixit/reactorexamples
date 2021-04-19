@@ -10,9 +10,9 @@ public class Case05MonoFromRunnable {
         Mono
                 .fromRunnable(someOtherTask())
                 .subscribe(
-                        obj -> System.out.println(obj),
+                        System.out::println,
                         err -> System.out.println("Error " + err.getMessage()),
-                        () -> System.out.println("Complete") // Notification of someothertask is completed.
+                        () -> System.out.println("Complete") // Notification of some other task is completed.
                 );
 
     }
