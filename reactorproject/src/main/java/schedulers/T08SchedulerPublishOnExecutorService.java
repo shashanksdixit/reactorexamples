@@ -6,7 +6,7 @@ import reactor.core.scheduler.Schedulers;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class T08SchedulerExecutorService {
+public class T08SchedulerPublishOnExecutorService {
     public static void main(String[] args) throws InterruptedException {
         Flux.just("1", "2", "3")
                 .log()

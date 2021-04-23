@@ -3,12 +3,11 @@ package schedulers;
 import reactor.core.publisher.Flux;
 import reactor.core.scheduler.Schedulers;
 
-import java.util.function.Function;
-
-
+// Observe that the threads are created as number of cores available.
 public class T04RunOn {
     public static void main(String[] args) throws InterruptedException {
-        Flux.just("1", "2", "3", "4", "5", "6", "7")
+        System.out.println("Available Processors : " + Runtime.getRuntime().availableProcessors());
+        Flux.just("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
                 .parallel()
                 .runOn(Schedulers.parallel())
                 .map( str -> {
