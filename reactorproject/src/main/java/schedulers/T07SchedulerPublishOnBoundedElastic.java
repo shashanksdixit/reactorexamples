@@ -5,7 +5,7 @@ import reactor.core.scheduler.Schedulers;
 
 
 //To do
-public class T07SchedulerBoundedElastic {
+public class T07SchedulerPublishOnBoundedElastic {
     public static void main(String[] args) throws InterruptedException {
         Flux.just("1", "2", "3")
                 .log()
