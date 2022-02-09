@@ -17,5 +17,8 @@ public class Case01MonoJust {
         // Stream stream = Stream.of(1, 2);
         // stream.forEach(System.out::println);
         // stream.forEach(System.out::println);
+
+        // logging the events
+        mono.log().subscribe(System.out::println);
     }
 }
