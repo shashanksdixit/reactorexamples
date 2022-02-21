@@ -3,7 +3,7 @@ package fluxcreate;
 import com.github.javafaker.Faker;
 import reactor.core.publisher.Flux;
 
-public class Case10FluxCreateModify {
+public class Case10FluxCreateTakeOperator {
     public static void main(String[] args) {
         // Check how flux sink emits even after onComplete. Now uncomment the code and check.
         Flux.create(fluxSink -> {

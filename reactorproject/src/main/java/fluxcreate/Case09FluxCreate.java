@@ -1,6 +1,7 @@
 package fluxcreate;
 
 import com.github.javafaker.Faker;
+import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
 
@@ -10,7 +11,7 @@ public class Case09FluxCreate {
 
     public static void main(String[] args) {
         Flux.create(fluxSink -> {
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
                 fluxSink.next(Faker.instance().aviation().airport());
             fluxSink.complete();
         }).subscribe(System.out::println);
@@ -35,6 +36,7 @@ public class Case09FluxCreate {
 class BookPublisher implements Consumer<FluxSink<String>> {
 
     private FluxSink<String> fluxSink;
+
     @Override
     public void accept(FluxSink<String> stringFluxSink) {
         this.fluxSink = stringFluxSink;
@@ -44,6 +46,8 @@ class BookPublisher implements Consumer<FluxSink<String>> {
         fluxSink.next(Faker.instance().book().title());
     }
 
-    public void complete() { fluxSink.complete(); }
+    public void complete() {
+        fluxSink.complete();
+    }
 
 }
