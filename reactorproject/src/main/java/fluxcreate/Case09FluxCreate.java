@@ -12,20 +12,22 @@ public class Case09FluxCreate {
         Flux.create(fluxSink -> {
             for(int i = 0; i < 10; i++)
                 fluxSink.next(Faker.instance().aviation().airport());
+            fluxSink.complete();
         }).subscribe(System.out::println);
 
         // We can do it in another way.
 
         BookPublisher publisher = new BookPublisher();
-        Flux.create(publisher)
+        Flux.create(publisher).log()
                 .subscribe(bookName -> System.out.println("Publishing book - " + bookName));
         for (int i = 0; i < 10; i++)
             publisher.getBook();
+        publisher.complete();
     }
 
-    private static BookPublisher getPublisher() {
-        return new BookPublisher();
-    }
+//    private static BookPublisher getPublisher() {
+//        return new BookPublisher();
+//    }
 
 }
 
@@ -41,4 +43,7 @@ class BookPublisher implements Consumer<FluxSink<String>> {
     public void getBook() {
         fluxSink.next(Faker.instance().book().title());
     }
+
+    public void complete() { fluxSink.complete(); }
+
 }
