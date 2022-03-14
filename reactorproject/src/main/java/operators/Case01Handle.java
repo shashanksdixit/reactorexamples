@@ -1,18 +1,15 @@
 package operators;
 
-import com.github.javafaker.Country;
 import com.github.javafaker.Faker;
 import reactor.core.publisher.Flux;
-
-import java.util.Locale;
 
 public class Case01Handle {
     public static void main(String[] args) {
         Flux.generate(synchronousSink -> synchronousSink.next(Faker.instance().country().name()))
                 .map(country -> country.toString())
-                .handle((country, synchronousSink) -> {
+                .handle((country, synchronousSink) -> { // sends data further with synchronous sync to operate on
                     synchronousSink.next(country);
-                    if (country.toLowerCase().equals("japan")) {
+                    if (country.equalsIgnoreCase("japan")) {
                         synchronousSink.complete();
                     }
                 })

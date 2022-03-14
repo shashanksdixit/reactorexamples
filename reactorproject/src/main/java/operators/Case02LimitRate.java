@@ -7,7 +7,7 @@ public class Case02LimitRate {
         /* default */
         Flux.range(1, 1000)
                 .log()
-                .limitRate(100)
+                .limitRate(100) //limit to 100
                 .log()
                 .subscribe(i -> System.out.println("Received : " + i));
 
